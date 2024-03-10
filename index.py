@@ -5,13 +5,15 @@ from pyrogram.types import Message, ChatPermissions
 API_ID = 1234
 API_HASH = "SDFGH"
 PHONE_NUMBER = "+97255----"
-SESSION_NAME = "filter-word"
-GROUP_ID_FILTER = -123456
+SESSION_NAME = "filter-message"
+GROUP_ID_FILTER = -1002016182372
 app = Client(SESSION_NAME, api_hash=API_HASH, api_id=API_ID, phone_number=PHONE_NUMBER)
 
 
-@app.on_message(filters.text & filters.caption & filters.group & ~filters.me, group=GROUP_ID_FILTER)
+@app.on_message(filters.text | filters.caption & filters.group & ~filters.me)
 async def filter_words(client: Client, message: Message):
+    if message.chat.id != GROUP_ID_FILTER:
+        return
     message_text = message.text or message.caption
     matched_action = check_message(message_text)
     if matched_action:
