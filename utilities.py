@@ -1,7 +1,7 @@
 import json
 import re
 import shelve
-
+from pyrogram.types import Message
 from cachetools import TTLCache
 from pyrogram import Client
 from pyrogram.enums import ChatMembersFilter
