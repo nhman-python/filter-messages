@@ -48,7 +48,7 @@ Filter Word Bot is a Telegram bot designed to filter messages in group chats bas
 Run the bot script:
 
 ```bash
-python index.py
+python3 index.py
 ```
 
 Once the bot is running, it will start filtering messages in the specified group chat according to the configured filter list.
